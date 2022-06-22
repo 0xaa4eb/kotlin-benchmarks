@@ -5,7 +5,7 @@ mvn clean package
 
 Fast check:
 ```
-java -jar target/benchmarks.jar -wi 2 -i 5 -f 1 -tu ns -bm avgt InlineMethodBenchmark
+java -jar target/benchmarks.jar -wi 2 -i 2 -f 1 -tu ns -bm avgt InlineMethodBenchmark
 ```
 
 Analyze:
