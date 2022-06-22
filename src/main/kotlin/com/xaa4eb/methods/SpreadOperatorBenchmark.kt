@@ -7,15 +7,25 @@ import java.util.concurrent.TimeUnit
 @State(Scope.Benchmark)
 @BenchmarkMode(Mode.AverageTime)
 @OutputTimeUnit(TimeUnit.NANOSECONDS)
-open class VarargMethodBenchmark {
+open class SpreadOperatorBenchmark {
 
-    private lateinit var arrayWith10Items: IntArray
+    private lateinit var arrayWith20Items: IntArray
 
     private lateinit var arrayWith1Item: IntArray
 
     @Setup(Level.Iteration)
     open fun setup() {
-        arrayWith10Items = intArrayOf(
+        arrayWith20Items = intArrayOf(
+                ThreadLocalRandom.current().nextInt(),
+                ThreadLocalRandom.current().nextInt(),
+                ThreadLocalRandom.current().nextInt(),
+                ThreadLocalRandom.current().nextInt(),
+                ThreadLocalRandom.current().nextInt(),
+                ThreadLocalRandom.current().nextInt(),
+                ThreadLocalRandom.current().nextInt(),
+                ThreadLocalRandom.current().nextInt(),
+                ThreadLocalRandom.current().nextInt(),
+                ThreadLocalRandom.current().nextInt(),
                 ThreadLocalRandom.current().nextInt(),
                 ThreadLocalRandom.current().nextInt(),
                 ThreadLocalRandom.current().nextInt(),
@@ -37,8 +47,8 @@ open class VarargMethodBenchmark {
     }
 
     @Benchmark
-    fun benchmarkWith10Items() {
-        acceptVararg(*arrayWith10Items)
+    fun benchmarkWith20Items() {
+        acceptVararg(*arrayWith20Items)
     }
 
     @CompilerControl(CompilerControl.Mode.DONT_INLINE)
